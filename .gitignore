@@ -1,3 +1,7 @@
+#don't commit other subrepos
+app/
+scripts/
+
 #ssl certs
 ssl.*
 
