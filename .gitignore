@@ -2,9 +2,6 @@
 app/
 scripts/
 
-#don't accidentally commit config.py... that would be bad
-config.py
-
 #ssl certs
 ssl.*
 
