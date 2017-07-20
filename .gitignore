@@ -1,3 +1,8 @@
+#ignore script files in here 
+cron_run_debates_iterate.sh
+iterate_over_debates.py
+run.sh
+
 #config.py in prod
 config.py
 
