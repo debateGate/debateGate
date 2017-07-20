@@ -1,3 +1,6 @@
+#config.py in prod
+config.py
+
 #don't commit other subrepos
 app/
 scripts/
