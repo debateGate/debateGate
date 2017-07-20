@@ -1,6 +1,6 @@
-from app.main import main
+from app.main import main as app
 if __name__ == '__main__':
     if main.config["DEBUG"] == True:
-        main.run(host="localhost", ssl_context=('./ssl.crt', './ssl.key'))
+        app.run(host="localhost", ssl_context=('./ssl.crt', './ssl.key'))
     else:
-        main.run()
+        app.run()
