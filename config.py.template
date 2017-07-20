@@ -6,7 +6,7 @@ class Auth:
     CLIENT_ID = ('google id'
                  '.apps.googleusercontent.com')
     CLIENT_SECRET = 'secrets'
-    REDIRECT_URI = 'https://www.debategate.net/gCallBack' # change this to localhost:5000 in dev
+    REDIRECT_URI = 'https://localhost:5000/gCallBack' # change this to the website in prod
     AUTH_URI = 'https://accounts.google.com/o/oauth2/auth'
     TOKEN_URI = 'https://accounts.google.com/o/oauth2/token'
     USER_INFO = 'https://www.googleapis.com/userinfo/v2/me'
