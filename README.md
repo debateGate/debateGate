@@ -1,6 +1,31 @@
-# Scaffolding
-The base folder for debateGate that contains the config.py and other sensitive files
+# debateGate.net
 
-Config.py is a file that contains sensitive information, like email passwords and secret keys and the like. It's been scrubbed of this information, so that if you want to use it yourself when downloading debateGate you can. You have to provide an email address, the access keys for the Google API, and some other information to use it.
+This is all the code for debateGate.net
 
-The requirements.txt is the single requirements.txt for the whole project, for use in generating the flask/ virtual environment.
+# Install (Linux)
+You can run this series of commands in the directory you wish to install debateGate in:
+
+`wget https://gist.githubusercontent.com/dev-sebbot/1a61d31f7ea169b6f6a2973614e9633e/raw/e1ffea48dda48713b0a803c30a3437fed03c2aa1/debateGate_install.sh`
+
+`chmod +x ./debateGate_install.sh`
+
+`./debateGate_install.sh`
+
+
+This will download the install script, make the it executable, and install the project. If you want to download the file via your browser instead of using wget, you can grab it from [here](https://gist.github.com/dev-sebbot/1a61d31f7ea169b6f6a2973614e9633e). Note that you may need to use your package manager to install platform-specific packages (Ubuntu has python3-venv, for example) for this to work.
+
+You will then need to install Postgresql and createdb a new database. Also, in app/main.py, you'll probably want to change the mode from "prod" to "dev". Doing this means you'll also need to self-sign and put in the base directory (above app/) an ssl.crt and an ssl.key.
+
+Then, you'll need to add the following information into config.py.template in the appropriate places, **and rename it to config.py**:
+
+1. Google API client ID
+2. Google API client secret
+3. A different redirect URI
+4. A Gmail address and password, for emailing
+5. Database name, corresponding to your Postgres database.
+
+After you do all this, you can move setup_database.sh from the scripts/database folder into the base folder, above app/, and execute it. For a successful execution you may need to source the virtual environment:
+
+`source flask/bin/activate`
+
+You should now have a working install of debateGate.
