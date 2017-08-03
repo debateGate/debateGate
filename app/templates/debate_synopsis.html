@@ -21,6 +21,8 @@
         <div class="pro_versus_info_container">
             {% if server_data["debate_stage"] == "finished" %}
                 <b><span class="votes_style">Votes: {{ server_data["pro_votes"] }}</span></b>
+	    {% else %}
+                <b><span class="votes_style">Pro</span></b>
             {% endif %}
 
             <div class="pro_versus_info">
@@ -97,6 +99,8 @@
         <div class="con_versus_info_container">
             {% if server_data["debate_stage"] == "finished" %}
                 <b><span class="votes_style">Votes: {{ server_data["con_votes"] }}</span></b>
+	    {% else %}
+                <b><span class="votes_style">Con</span></b>
             {% endif %}
 
             <div class="con_versus_info">
