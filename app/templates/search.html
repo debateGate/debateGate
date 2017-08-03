@@ -1,0 +1,32 @@
+{% extends "_base.html" %}
+
+{% block logo_path %}../../../static/img/bull.png{% endblock %}
+{% block social_media_path_patreon %}../../../static/img/patreon_logo.png{% endblock %}
+{% block social_media_path_twitter %}../../../static/img/twitter_logo.png{% endblock %}
+{% block social_media_path_tumblr %}../../../static/img/tumblr_logo.png{% endblock %}
+{% block social_media_path_github %}../../../static/img/github_logo.png{% endblock %}
+
+{% block stylesheet %}"../../../static/css/search.css"{% endblock %}
+
+{% block base_stylesheet_path_override %}
+	<link rel="stylesheet" type="text/css" href="../../../static/css/base.css" media="screen"/>
+{% endblock %}
+
+{% block title %}debateGate -- Debateabase search{% endblock %}
+
+{% block content %}
+
+<br>
+<table width="100%" margin="0%" padding="0%" class="debateTable">
+	{% for debate in server_data["debates"] %}
+		{% include "modules/show_debate.html"%}
+	{% endfor %}
+
+  {% if server_data["debates"]|length == 0 %}
+    <p style="margin-left:2%;">There are no debates in this category. Have you considered
+			  <a href = {{ url_for("create_or_join_debate") }}>starting one?</a></p>
+  {% endif %}
+  </table>
+
+{% include "modules/paginate_buttons.html" %}
+{% endblock %}

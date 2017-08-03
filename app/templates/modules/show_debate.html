@@ -1,0 +1,71 @@
+<tr>
+    <td>
+<section class="debate">
+
+  <div class="pro_info_container">
+  <div class="user_pro_info">
+
+	{% if debate.user_pro is not none %}
+	    <a href = {{ url_for("profile", user_id=debate.user_pro.id, page=1) }}>
+          <img src="{{ debate.user_pro.avatar }}" width=100 height=100> <br>
+          {{ debate.user_pro.name }}
+	    </a>
+  {% else %}
+      <p>Waiting for debate partner...</p>
+  {% endif %}
+
+  </div>
+  </div>
+
+  <div class="versus_info_container">
+  <div class="versus_info">
+
+	<a href={{ url_for("debate_synopsis", debate_id=debate.id) }}>
+      <h3> Topic: {{ debate.topic }} </h3>
+	</a>
+
+	<h4>V.S</h4>
+
+  {% if debate.stage == "voting" %}
+      Voting
+  {% elif debate.stage == "finished" %}
+      Finished
+  {% elif debate.stage == "archived" %}
+      Archived
+  {% else %}
+	    Round {{ debate.current_round_number }} of {{ debate.max_round_number }}
+  {% endif %}
+
+  <br>
+
+  {% if (debate.is_timed == "timed") or (debate.is_timed == none) %}
+      Timed
+  {% else %}
+      Untimed
+  {% endif %}
+
+  <br>
+  Views: {{ debate.views }}
+
+  </div>
+  </div>
+
+  <div class="con_info_container">
+  <div class="user_con_info">
+
+	{% if debate.user_con is not none %}
+		<a href = {{ url_for("profile", user_id=debate.user_con.id, page=1) }}>
+			  <img src="{{ debate.user_con.avatar }}" width=100 height=100> <br>
+        {{ debate.user_con.name }}
+		</a>
+
+    {% else %}
+        <p>Waiting for debate partner...</p>
+    {% endif %}
+
+  </div>
+  </div>
+
+</section>
+    </td>
+</tr>

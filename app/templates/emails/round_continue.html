@@ -1,0 +1,20 @@
+<html><head></head>
+    <body>
+        <h3 style="text-align:center;">
+            <a href="https://www.debategate.net/debates/debate_synopsis/{{ debate.id }}">It's your turn</a>, {{ recipient_name }}!
+        </h3>
+
+        <p style="margin-left:2%;">
+            Your opponent, {{ opponent_name }}, just ended their turn. It's time to go show them why
+            they're wrong!
+
+            <br><br>
+
+            {{ opponent_name }} and you are currently debating {{ debate.topic }}. It's round
+            {{ debate.current_round_number }}.
+            <br>
+        </p>
+
+        {% include "emails/footer.html" %}
+    </body>
+</html>

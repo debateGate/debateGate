@@ -1,0 +1,38 @@
+{% extends "_base.html" %}
+
+{% block logo_path %}../../static/img/bull.png{% endblock %}
+{% block social_media_path_patreon %}../../static/img/patreon_logo.png{% endblock %}
+{% block social_media_path_twitter %}../../static/img/twitter_logo.png{% endblock %}
+{% block social_media_path_tumblr %}../../static/img/tumblr_logo.png{% endblock %}
+{% block social_media_path_github %}../../static/img/github_logo.png{% endblock %}
+
+{% block stylesheet %}"../../../static/css/profile.css"{% endblock %}
+
+{% block base_stylesheet_path_override %}
+	<link rel="stylesheet" type="text/css" href="../../../static/css/base.css" media="screen"/>
+{% endblock %}
+
+{% block title %}debateGate -- {{ server_data["prof_user"].name }}'s Profile{% endblock %}
+
+{% block content %}
+
+<div id="profile_data">
+    <img src={{ server_data["prof_user"].avatar }} width=128 height=128><br>
+    {{ server_data["prof_user"].name }}<br><br>
+
+    Win/loss ratio:<br> {{ server_data["prof_user"].wins }} : {{ server_data["prof_user"].losses }} <br>
+</div>
+
+    <br><br>
+
+<h2 style="margin-left:1%;">Debates:</h2>
+
+<table width="100%" margin="0%" padding="0%" class="debateTable">
+    {% for debate in server_data["debates"] %}
+		    {% include "modules/show_debate.html"%}
+		    <br>
+	  {% endfor %}
+</table>
+
+{% include "modules/paginate_buttons.html" %}
+{% endblock %}

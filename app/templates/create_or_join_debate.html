@@ -1,0 +1,94 @@
+{% extends "_base.html" %}
+
+{% block stylesheet %}"../static/css/create_or_join_debate.css"{% endblock %}
+
+{% block logo_path %}static/img/bull.png{% endblock %}
+{% block social_media_path_patreon %}static/img/patreon_logo.png{% endblock %}
+{% block social_media_path_twitter %}static/img/twitter_logo.png{% endblock %}
+{% block social_media_path_tumblr %}static/img/tumblr_logo.png{% endblock %}
+{% block social_media_path_github %}static/img/github_logo.png{% endblock %}
+
+{% block title %}debateGate -- Create/Join Debate{% endblock %}
+
+{% block content %}
+
+<form class="form_adjust" action="" method="post" name="server_data["create_debate_form"]">
+		{{ server_data["create_debate_form"].hidden_tag() }}
+    <h1>Create Debate</h1>
+
+    <p>
+			  Debate Type:
+			  {{ server_data["create_debate_form"].debate_type }}
+		</p>
+
+    {% for error in server_data["create_debate_form"].debate_type.errors %}
+        <span style="color:red;">[Problem with debate type: {{ error }}]</span>
+    {% endfor %}
+
+
+    <p>
+			  Timing:
+			  {{ server_data["create_debate_form"].is_timed }}
+		</p>
+
+    {% for error in server_data["create_debate_form"].is_timed.errors %}
+        <span style="color:red;">[Problem with timing: {{ error }}]</span>
+    {% endfor %}
+
+
+		<p>
+			  Topic of Debate:
+			  {{ server_data["create_debate_form"].topic }}
+		</p>
+
+    {% for error in server_data["create_debate_form"].topic.errors %}
+        <span style="color:red;">[Problem with debate topic: {{ error }}]</span>
+    {% endfor %}
+
+
+		<p>
+			  Maximum number of Debate rounds:
+			  {{ server_data["create_debate_form"].max_round_number }}
+		</p>
+
+    {% for error in server_data["create_debate_form"].max_round_number.errors %}
+        <span style="color:red;">[Problem with debate max round number: {{ error }}]</span>
+    {% endfor %}
+
+
+		<p>
+			  Would you like to be on the Supporting or Opposing side?
+			  {{ server_data["create_debate_form"].pro_or_con }}
+		</p>
+
+    {% for error in server_data["create_debate_form"].pro_or_con.errors %}
+        <span style="color:red;">[Problem with debate side: {{ error }}]</span>
+    {% endfor %}
+
+
+		<p><input type="submit" value="Create Debate"></p>
+</form>
+
+
+<hr>
+
+
+
+<form class="form_adjust" action="" method="post" name="search_debates_form">
+		{{ server_data["search_debates_form"].hidden_tag() }}
+
+
+    <h1> Join Debate </h1>
+    <p>
+			  Search topics to include in titles, e.g. "Abortion", "Gun Control", "Death Penalty".<br>
+			  {{ server_data["search_debates_form"].search_bar }}
+    </p>
+
+		{% for error in server_data["search_debates_form"].search_bar.errors %}
+        <span style="color:red;">[Problem with search: {{ error }}]</span>
+    {% endfor %}
+
+
+		<p><input type="submit" value="Search"</p>
+</form>
+{% endblock %}

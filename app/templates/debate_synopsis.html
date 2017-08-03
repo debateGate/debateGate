@@ -1,0 +1,188 @@
+{% extends "_base.html" %}
+
+{% block base_stylesheet_path_override %}
+    <link rel="stylesheet" type="text/css" href="../../static/css/base.css" media="screen"/>
+{% endblock %}
+
+{% block logo_path %}../../static/img/bull.png{% endblock %}
+{% block social_media_path_patreon %}../../static/img/patreon_logo.png{% endblock %}
+{% block social_media_path_twitter %}../../static/img/twitter_logo.png{% endblock %}
+{% block social_media_path_tumblr %}../../static/img/tumblr_logo.png{% endblock %}
+{% block social_media_path_github %}../../static/img/github_logo.png{% endblock %}
+
+{% block stylesheet %}"../../static/css/debate_synopsis.css"{% endblock %}
+
+{% block title %}debateGate -- Debate Synopsis {% endblock %}
+
+{% block content %}
+    <h1>{{ server_data["debate_topic"] }}</h1><br>
+
+    <section class="user_info_supercontainer">
+        <div class="pro_versus_info_container">
+            {% if server_data["debate_stage"] == "finished" %}
+                <b><span class="votes_style">Votes: {{ server_data["pro_votes"] }}</span></b>
+            {% endif %}
+
+            <div class="pro_versus_info">
+            {% if server_data["canVote"] == True %}
+                <a href = {{ url_for("profile", user_id=server_data["user_pro"].id, page=1) }}>
+                    <img src={{ server_data["user_pro"].avatar }} class="pro_versus_info">
+                </a>
+
+                <b><span class="name">{{ server_data["user_pro"].name }}</span></b>
+
+            {% else %}
+                {% if server_data["user_pro"] is not none %}
+                    <a href = {{ url_for("profile", user_id=server_data["user_pro"].id, page=1) }}>
+                        <img src={{ server_data["user_pro"].avatar }} class="pro_versus_info">
+                    </a>
+
+                    <b><span class="name">{{ server_data["user_pro"].name }}</span></b>
+                {% else %}
+                    <p class="pro_versus_info">Waiting for opposing debater...</p>
+
+                    {% if server_data["join_debate_form"] is defined %}
+                        <form action="" method="post" name="join_debate" class="pro_versus_info">
+                            {{ server_data["join_debate_form"].hidden_tag() }}
+                            {{ server_data["join_debate_form"].button }}
+                        </form>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+            </div>
+
+            {% if server_data["canVote"] == True %}
+                <div class="vote">
+                <a href = {{ url_for("vote", user_id=server_data["user"].id, debate_id=server_data["debate_id"],
+                          pro_or_con="pro") }}>
+                    <img class = "vote" src="../../static/img/vote.png" width="50px" height="50px">
+                </a>
+                </div>
+            {% endif %}
+
+        </div>
+
+        <div class="versus_header_container">
+            <h2 class="versus_header">VS</h2>
+
+            <br><br>
+
+            {% if server_data["debate_stage"] == "voting" %}
+                <p>Voting ends at:
+                    <br><b><span id="timecontainer">{{ server_data["debate_time"] }}</span></b>
+                </p>
+            {% elif server_data["debate_stage"] == "finished" or server_data["debate_stage"] == "archived" %}
+                <p>Debate ended at:
+                    <br><b><span id="timecontainer">{{ server_data["debate_time"] }}</span></b>
+                </p>
+            {% endif %}
+
+            {% if server_data["is_timed"] == "timed"  %}
+                {% if server_data["debate_stage"] == "pro" and
+                server_data["user_pro"] is not none and
+                server_data["user_con"] is not none %}
+                    <p>Pro turn ends at:
+                        <br><b><span id="timecontainer">{{ server_data["debate_time"] }}</span></b>
+                    </p>
+            {% elif server_data["debate_stage"] == "con" and
+                server_data["user_con"] is not none and
+                server_data["user_pro"] is not none %}
+                    <p>Con turn ends at:
+                        <br><b><span id="timecontainer">{{ server_data["debate_time"] }}</span></b>
+                    </p>
+            {% endif %}
+            {% endif %}
+        </div>
+
+        <div class="con_versus_info_container">
+            {% if server_data["debate_stage"] == "finished" %}
+                <b><span class="votes_style">Votes: {{ server_data["con_votes"] }}</span></b>
+            {% endif %}
+
+            <div class="con_versus_info">
+                {% if server_data["canVote"] == True %}
+                    <a href = {{ url_for("profile", user_id=server_data["user_con"].id, page=1) }}>
+                        <img src={{ server_data["user_con"].avatar }} class="con_versus_info">
+                    </a>
+
+                    <b><span class="name">{{ server_data["user_con"].name }}</span></b>
+                {% else %}
+                    {% if server_data["user_con"] is not none %}
+                        <a href = {{ url_for("profile", user_id=server_data["user_con"].id, page=1) }}>
+                            <img src={{ server_data["user_con"].avatar }} class="con_versus_info">
+                        </a>
+                        <b><span class="name">{{ server_data["user_con"].name }}</span></b>
+                    {% else %}
+                        <p class="con_versus_info"> Waiting for opposing debater...</p>
+
+                    {% if server_data["join_debate_form"] is defined %}
+                        <form action="" method="post" name="join_debate" class="con_versus_info">
+                            {{ server_data["join_debate_form"].hidden_tag() }}
+                            {{ server_data["join_debate_form"].button }}
+                        </form>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+            </div>
+
+            {% if server_data["canVote"] == True %}
+                <div class="vote">
+                    <a href={{ url_for("vote", user_id=server_data["user"].id, debate_id=server_data["debate_id"],
+                        pro_or_con="con") }}>
+                    <img class="vote" src="../../static/img/vote.png" width="50px" height="50px">
+                </a>
+                </div>
+            {% endif %}
+
+        </div>
+    </section>
+
+    {% if server_data["claim_support_form"] is defined %}
+      <hr>
+
+      <div>
+	        <form action="" method="post" name="claim_support" style="width:500px;margin:auto;">
+              {{ server_data["claim_support_form"].hidden_tag() }}
+
+              Claim: <br>{{ server_data["claim_support_form"].claim_1(rows=10, cols=70) }}<br>
+
+              {% for error in server_data["claim_support_form"].claim_1.errors %}
+                  <span style="color:red;">[Problem with claim: {{ error }}]</span>
+              {% endfor %}
+
+              <div style=""><br><br>Because:<br></div>
+              {{ server_data["claim_support_form"].support_1(rows=10, cols=70) }} <br>
+
+              {% for error in server_data["claim_support_form"].support_1.errors %}
+                  <span style="color:red;">[Problem with justification: {{ error }}]</span>
+              {% endfor %}
+
+              <br>
+
+		          <p><input type="submit" value="Submit"></p>
+          </form>
+      </div>
+
+  {% endif %}
+
+  <hr>
+  {% include "modules/show_round_info.html" %}
+
+  {% if server_data["is_timed"] == "timed" %}
+     <script src="../../static/jscript/convert_from_utc_to_local.js"></script>
+  {% endif %}
+
+  {% if server_data["debate_stage"] == "voting" or
+        server_data["debate_stage"] == "pro" or
+        server_data["debate_stage"] == "con" %}
+      {% if server_data["debate_time"] is not none %}
+          <script src="../../static/jscript/countdown_timer.js" async></script>
+      {% endif %}
+  {% endif %}
+
+  <script src="../../static/jscript/ajax/query_for_debate_change_and_refresh.js"
+          debate_id={{ server_data["debate_id"]|tojson }}
+          round_num={{ server_data["round_num"]|tojson }}
+          debate_stage={{ server_data["debate_stage"]|tojson }} async>
+  </script>
+{% endblock %}

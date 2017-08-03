@@ -1,0 +1,21 @@
+<html><head></head>
+    <body>
+        <h3 style="text-align:center;">
+            Someone joined <a href="https://www.debategate.net/debates/debate_synopsis/{{ debate.id }}">
+            your debate</a>!
+        </h3>
+
+        <p style="margin-left:2%;">
+            Your opponent is: <br><br>
+            {{ opponent_name }}<br>
+            <img src={{ opponent_pic }} width="250px" height ="250px">
+            <br><br>
+
+            {{ opponent_name }} and you are currently debating {{ debate.topic }}. It's round
+            {{ debate.current_round_number }}.
+            <br>
+        </p>
+
+        {% include "emails/footer.html" %}
+    </body>
+</html>

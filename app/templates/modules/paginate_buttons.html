@@ -1,0 +1,38 @@
+<section class="pagination_buttons">
+    {% if request.endpoint == "profile" %}
+        {% if server_data["pagenum"] != 1 %}
+            <a href={{ url_for(request.endpoint, user_id=server_data["user_id"], page=(server_data["pagenum"] - 1)) }}>Previous</a>
+        {% endif %}
+
+        {% if server_data["pagenum"] < server_data["max_pagenum"] %}
+            <a href={{ url_for(request.endpoint, user_id=server_data["user_id"], page=(server_data["pagenum"] + 1)) }}>Next</a>
+        {% endif %}
+
+    {% elif request.endpoint == "homepage" %}
+        {% if server_data["pagenum"] != 1 %}
+            <a href={{ url_for("homepage_with_params_wrapper", searchtype=server_data["searchtype"], terms=server_data["terms"], page=(server_data["pagenum"] - 1)) }}>Previous</a>
+        {% endif %}
+
+        {% if server_data["pagenum"] < server_data["max_pagenum"] %}
+            <a href={{ url_for("homepage_with_params_wrapper", searchtype=server_data["searchtype"], terms=server_data["terms"], page=(server_data["pagenum"] + 1)) }}>Next</a>
+        {% endif %}
+
+    {% elif request.endpoint == "search" %}
+        {% if server_data["pagenum"] != 1 %}
+            <a href={{ url_for(request.endpoint, searchtype=server_data["searchtype"], terms=server_data["terms"], page=(server_data["pagenum"] - 1)) }}>Previous</a>
+        {% endif %}
+
+        {% if server_data["pagenum"] < server_data["max_pagenum"] %}
+            <a href={{ url_for(request.endpoint, searchtype=server_data["searchtype"], terms=server_data["terms"], page=(server_data["pagenum"] + 1)) }}>Next</a>
+        {% endif %}
+
+    {% else %}
+        {% if server_data["pagenum"] != 1 %}
+            <a href={{ url_for("homepage_with_params_wrapper", searchtype=server_data["searchtype"], terms=server_data["terms"], page=(server_data["pagenum"] - 1)) }}>Previous</a>
+        {% endif %}
+
+        {% if server_data["pagenum"] < server_data["max_pagenum"] %}
+            <a href={{ url_for("homepage_with_params_wrapper", searchtype=server_data["searchtype"], terms=server_data["terms"], page=(server_data["pagenum"] + 1)) }}>Next</a>
+        {% endif %}
+    {% endif %}
+</section>

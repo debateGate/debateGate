@@ -1,0 +1,3 @@
+Voting has begun at https://www.debategate.net/debates/debate_synopsis/{{ debate.id }}, {{ recipient_name }}!
+
+{{ opponent_name }} and you are currently debating {{ debate.topic }}.

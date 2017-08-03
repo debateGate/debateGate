@@ -1,0 +1,48 @@
+{% for n in range(0, server_data["max_round_number"]) %}
+
+	<section class="round">
+	    <h2> Round {{ n + 1 }}</h2>
+
+      {% if server_data["rounds"][n] is defined %}
+          <section class="pro">
+              <h4>Pro</h4>
+
+              {% if server_data["rounds"][n][0] is defined %}
+                  {% for e in server_data["rounds"][n][0] %}
+                      <div>
+                          <p><b>Claim: </b>{{ e["claim"] }}</p> <div style="text-align:center;"><b>because</b></div>  <p>{{ e["support"] }}</p>
+                      </div>
+                  {% endfor %}
+              {% endif %}
+          </section>
+
+          <section class="con">
+              <h4>Con</h4>
+
+              {% if server_data["rounds"][n][1] is defined %}
+                  {% for e in server_data["rounds"][n][1] %}
+                      <p><b>Claim: </b>{{ e["claim"] }}</p> <div style="text-align:center;"><b>because</b></div>  <p>{{ e["support"] }}</p>
+                  {% endfor %}
+              {% endif %}
+          </section>
+
+      {% endif %}
+
+      {% if n == 1 and server_data["is_vip"] != True %}
+          <div style="margin:auto;width:728px;">
+              <script type="text/javascript">
+               google_ad_client = "ca-pub-7773030485607546";
+               google_ad_slot = "1531994712";
+               google_ad_width = 728;
+               google_ad_height = 90;
+              </script>
+              <script type="text/javascript"
+                      src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+              </script>
+          </div>
+      {% endif %}
+
+	</section>
+  <hr>
+
+{% endfor %}

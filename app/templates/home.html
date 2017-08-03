@@ -1,0 +1,104 @@
+{% extends "_base.html" %}
+
+{% block logo_path %}
+{% if server_data["with_params"] == False %}
+  "static/img/bull.png"
+{% else %}
+  "../../../static/img/bull.png"
+{% endif %}
+{% endblock %}
+
+
+{% block social_media_path_patreon %}
+{% if server_data["with_params"] == False %}
+  static/img/patreon_logo.png
+{% else %}
+  ../../../static/img/patreon_logo.png
+{% endif %}
+{% endblock %}
+
+{% block social_media_path_tumblr %}
+{% if server_data["with_params"] == False %}
+  static/img/tumblr_logo.png
+{% else %}
+  ../../../static/img/tumblr_logo.png
+{% endif %}
+{% endblock %}
+
+{% block social_media_path_twitter %}
+{% if server_data["with_params"] == False %}
+  static/img/twitter_logo.png
+{% else %}
+  ../../../static/img/twitter_logo.png
+{% endif %}
+{% endblock %}
+
+{% block social_media_path_github %}
+{% if server_data["with_params"] == False %}
+  static/img/github_logo.png
+{% else %}
+  ../../../static/img/github_logo.png
+{% endif %}
+{% endblock %}
+
+
+{% block base_stylesheet_path_override %}
+{% if server_data["with_params"] == False %}
+  <link rel="stylesheet" type="text/css" href="../static/css/base.css" media="screen"/>
+{% else %}
+  <link rel="stylesheet" type="text/css" href="../../../static/css/base.css" media="screen"/>
+{% endif %}
+{% endblock %}
+
+{% block stylesheet %}
+{% if server_data["with_params"] == False %}
+  "static/css/home.css"
+{% else %}
+  "../../../static/css/home.css"
+{% endif %}
+{% endblock %}
+
+{% block title %}debateGate{% endblock %}
+
+{% block content %}
+
+<br>
+<table width="100%" margin="0%" padding="0%" class="debateTable">
+    {% set debateNum = 1 %}
+
+	  {% for debate in server_data["debates"] %}
+		    {% include "modules/show_debate.html" %}
+
+        {% set debateNum = debateNum + 1 %}
+
+        {% if debateNum == 5 and server_data["is_vip"] != True %}
+            <tr><td>
+                <div style="margin:auto;width:728px;">
+                    <script type="text/javascript">
+                     google_ad_client = "ca-pub-7773030485607546";
+                     google_ad_slot = "2445481518";
+                     google_ad_width = 728;
+                     google_ad_height = 90;
+                    </script>
+
+                    <script type="text/javascript"
+                            src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+                    </script></td></tr>
+                </div>
+        {% endif %}
+	  {% endfor %}
+
+    {% if server_data["debates"]|length == 0 %}
+        {% if current_user.is_authenticated %}
+            <p style="margin-left:2%;">There are no debates in this category. Have you considered
+			          <a href = {{ url_for("create_or_join_debate") }}>starting one?</a></p>
+        {% else %}
+            <p style="margin-left:2%;">There are no debates in this category. Have you considered
+    		        <a href = {{ server_data["auth_url"] }}>starting one?</a></p>
+        {% endif %}
+    {% endif %}
+</table>
+
+{% include "modules/paginate_buttons.html" %}
+
+{% endblock %}

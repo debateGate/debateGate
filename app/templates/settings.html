@@ -1,0 +1,33 @@
+{% extends "_base.html" %}
+
+{% block stylesheet %}"../static/css/settings.css"{% endblock %}
+
+{% block logo_path %}static/img/bull.png{% endblock %}
+{% block social_media_path_patreon %}static/img/patreon_logo.png{% endblock %}
+{% block social_media_path_twitter %}static/img/twitter_logo.png{% endblock %}
+{% block social_media_path_tumblr %}static/img/tumblr_logo.png{% endblock %}
+{% block social_media_path_github %}static/img/github_logo.png{% endblock %}
+
+{% block title %}debateGate -- Settings{% endblock %}
+
+{% block content %}
+
+<form class="form_adjust" action="" method="post" name="settings_form">
+		{{ server_data["settings_form"].hidden_tag() }}
+
+    <h1> Email Settings </h1>
+    Send emails when someone joins a debate you created: <br>
+		{{ server_data["settings_form"].send_user_joined_emails }}
+
+    Send emails when it's your turn in an untimed debate: <br>
+		{{ server_data["settings_form"].send_round_continue_emails }}
+
+    Send emails when an untimed debate you're in goes into voting mode: <br>
+		{{ server_data["settings_form"].send_voting_notification_emails }}
+
+    Send emails when a debate you're in finishes: <br>
+		{{ server_data["settings_form"].send_debate_finished_emails }}
+
+		<p><input type="submit" value="Save"></p>
+</form>
+{% endblock %}

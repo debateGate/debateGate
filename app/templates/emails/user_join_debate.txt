@@ -1,0 +1,1 @@
+An opponent named {{ opponent_name }} has joined your debate at https://www.debategate.net/debates/debate_synopsis/{{ debate.id }}.

@@ -1,0 +1,16 @@
+<html><head></head>
+    <body>
+        <h3 style="text-align:center;">
+            <a href="https://www.debategate.net/debates/debate_synopsis/{{ debate.id }}">Voting has begun</a>, {{ recipient_name }}!
+        </h3>
+
+        <p style="margin-left:2%;">
+            <a href="https://www.debategate.net/debates/debate_synopsis/{{ debate.id }}">Voting has begun</a> in your debate with {{ opponent_name }}.
+            {{ opponent_name }} and you are currently debating {{ debate.topic }}.
+
+            <br>
+        </p>
+
+        {% include "emails/footer.html" %}
+    </body>
+</html>

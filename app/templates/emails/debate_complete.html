@@ -1,0 +1,26 @@
+<html><head></head>
+    <body>
+        <h3 style="text-align:center;">
+            <a href="https://www.debategate.net/debates/debate_synopsis/{{ debate.id }}">
+                Your debate ended</a>, {{ recipient_name }}!
+        </h3>
+
+        <p style="margin-left:2%;">
+            <a href="https://www.debategate.net/debates/debate_synopsis/{{ debate.id }}">Your debate with</a> {{ opponent_name }} about {{ debate.topic }} just ended.
+        </p>
+
+        {% if win %}
+            <p style="margin-left:2%;">
+                After a long and arduous neck-and-neck race, you won the debate!<br><br>
+            </p>
+        {% else %}
+            <p style="margin-left:2%;">
+                After a long and arduous neck-and-neck race, you lost the debate.<br><br>
+            </p>
+        {% endif %}
+
+        {{ opponent_name }} got {{ votes["opponent"] }}, while you got {{ votes["recipient"] }}.
+
+        {% include "emails/footer.html" %}
+    </body>
+</html>

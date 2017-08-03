@@ -1,0 +1,64 @@
+h1, h2, h4 {
+    text-align: center;
+}
+
+.vote{
+    width: 55px;
+    height: 55px;
+    margin: auto;
+    margin-top: 2%;
+}
+
+.round, .user_info_supercontainer {
+    overflow: hidden;
+}
+
+.versus_header_container {
+    width: 15.5%;
+    float:left;
+    margin-top: 2%;
+    text-align: center;
+}
+
+.pro, .con, .pro_versus_info_container, .con_versus_info_container{
+    width: 42%;
+}
+
+.pro, .con {
+    width: 40%;
+}
+
+.pro {
+    margin-left: 2%;
+}
+
+.con {
+    margin-right: 2%;
+}
+
+.pro, .pro_versus_info_container {
+    float: left;
+}
+
+.con, .con_versus_info_container {
+    float: right;
+}
+
+.pro_versus_info, .con_versus_info, .votes_style, .name {
+    margin: auto;
+    display: block;
+    text-align: center;
+}
+
+.pro_versus_info, .con_versus_info, .name {
+    margin-bottom: 15%;
+}
+
+.pro_versus_info, .con_versus_info {
+    width: 150px;
+    height: 150px;
+}
+
+.name {
+    margin-bottom: 10%;
+}

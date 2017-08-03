@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+		    <link rel="shortcut icon" href={{ url_for('static', filename='img/bull.png') }}>
+		    <link rel="stylesheet" type="text/css" href="../static/css/base.css" media="screen"/>
+
+		    {% block base_stylesheet_path_override%}{% endblock %}
+
+		    <link rel="stylesheet" type="text/css" href={% block stylesheet %}{% endblock %} media="screen"/>
+
+		    <title>debateGate</title>
+		    <title>{% block title %}{% endblock %}</title>
+    </head>
+
+
+    <body id = "background">
+        <div id="websiteTitle"><a href={{ url_for('homepage') }}>debateGate.net</a></div>
+
+        <div id="bodyContainer">
+            <header id="gHeader">
+                <img src={% block logo_path %}{% endblock %} width="150" height="150">
+
+                <div id="loginInfo">
+                    {% if current_user.is_authenticated %}
+                        <p>{{ server_data["user"].name }}</p>
+				                <img src={{ server_data["user"].avatar }} width=96 height=96><br>
+				                <a href = {{ url_for("profile", user_id=current_user.id, page=1) }}>Your Profile</a><br>
+				                <a href = {{ url_for("settings") }}>Settings</a><br>
+				                <a href = {{ url_for("create_or_join_debate") }}>Create/Join Debate</a><br>
+				                <a href = {{ url_for("logout") }}>Logout</a><br>
+			              {% else %}
+    				            <a class="button" href = {{ server_data["auth_url"] }}>Start debating with Google</a>
+                    {% endif %}
+                </div>
+
+                <br>
+
+                <div id="searchFormBase">
+	                  <form action="" method="post" name="search_debates_form_multipage" >
+                        <br>
+                        <br>
+		                    {{ server_data["search_debates_form_multipage"].hidden_tag() }}
+			                  {{ server_data["search_debates_form_multipage"].debate_type }}
+			                  {{ server_data["search_debates_form_multipage"].search_bar(size=35) }}
+			                  {{ server_data["search_debates_form_multipage"].button }}
+                    </form>
+                </div>
+            </header>
+
+
+        <nav id="gNav">
+            <hr style="margin: 0;">
+        </nav>
+
+
+        <section id = "content">
+            {% block content %}{% endblock %}
+        </section>
+			  <hr>
+
+
+		    <footer id="gFooter">
+			      <a href = {{ url_for("mission_statement") }}>Mission Statement</a> |
+            <a href ="https://github.com/debateGate/debateGate-White-Paper/blob/master/On%20the%20Correction%20of%20Online%20Debate.pdf">White Paper</a> |
+            <a href = {{ url_for("claims") }}>What are claims?</a> |<br>
+            <a href ="mailto:sebastiancbenjamin@gmail.com">Email the Dev</a> |
+			      <a href = {{ url_for("privacy_statement") }}>Privacy Statement</a> | <br>
+
+            <span style="font-size: 12px;">debateGate ©2017 Sebastian Benjamin</span>
+
+            <div id="social_media">
+                <a href ="https://www.patreon.com/sebbot">
+                    <img src="{% block social_media_path_patreon %}{% endblock %}" width="32" height="32"/>
+                </a>
+
+                <a href="https://debategate.tumblr.com">
+                    <img src="{% block social_media_path_tumblr %}{% endblock %}" width="32" height="32"/>
+                </a>
+
+                <a href ="https://twitter.com/_debateGate">
+                    <img src="{% block social_media_path_twitter %}{% endblock %}" width="32" height="32"/>
+                </a>
+
+                <a href ="https://www.github.com/debateGate">
+                    <img src="{% block social_media_path_github %}{% endblock %}" width="32" height="32"/>
+                </a>
+            </div>
+        </footer>
+        <hr style="clear:both;">
+        </div>
+    </body>
+</html>

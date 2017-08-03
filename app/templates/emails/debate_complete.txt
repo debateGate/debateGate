@@ -1,0 +1,5 @@
+Your debate at: https://www.debategate.net/debates/debate_synopsis/{{ debate.id }} ended.
+
+You got {{ votes["recipient"] }} votes.
+
+Your opponent got {{ votes["opponent"] }} votes.
