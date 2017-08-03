@@ -11,6 +11,7 @@ config.py
 
 #ssl certs
 ssl.*
+*.pem
 
 #database migration repos 
 db_repo/
