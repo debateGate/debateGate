@@ -5,7 +5,7 @@ This is all the code for debateGate.net
 # Install (Linux)
 You can run this series of commands in the directory you wish to install debateGate in:
 
-`wget https://gist.githubusercontent.com/dev-sebbot/1a61d31f7ea169b6f6a2973614e9633e/raw/e1ffea48dda48713b0a803c30a3437fed03c2aa1/debateGate_install.sh`
+`wget https://gist.githubusercontent.com/dev-sebbot/1a61d31f7ea169b6f6a2973614e9633e/raw/8601ecf0b719db9bf8ae792d8573292e693fa383/debateGate_install.sh`
 
 `chmod +x ./debateGate_install.sh`
 
