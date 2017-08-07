@@ -22,7 +22,9 @@ for debate in Debate.query.all():
         continue
 
 
-    if (debate.time_for_next_phase is not None) and (datetime.datetime.utcnow() > debate.time_for_next_phase):
+    if (debate.time_for_next_phase is not None) and (datetime.datetime.utcnow() > debate.time_for_next_phase) \
+	and (debate.stage != "archived"):
+
         if debate.stage == "voting":
             debate.stage = "finished"
             debate.current_round_number += 1
