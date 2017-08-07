@@ -3,6 +3,9 @@
 ./iterate_over_debates.py
 ./run.sh
 
+#migrations
+migrations/
+
 #ignore deploy
 deploy.sh
 

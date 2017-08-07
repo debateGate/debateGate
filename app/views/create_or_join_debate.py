@@ -46,6 +46,7 @@ def create_or_join_debate():
             debate.max_round_number = create_debate_form.max_round_number.data
             debate.max_claim_number = 1 #create_debate_form.max_claim_number.data
             debate.isTimed = create_debate_form.is_timed.data
+            debate.has_sent_finished_emails = False
             debate.current_round_number = 1
             debate.views = 0
             debate.stage = "pro"
