@@ -80,7 +80,7 @@ class Debate(db.Model):
     claims = db.relationship("Claim", backref="Debate")
     users = db.relationship("UserDebate", back_populates="debate", cascade="all, delete-orphan")
     users_voted = db.relationship("User", secondary=user_vote_tally, back_populates="debates_voted")
-
+    has_sent_finished_emails = db.Column(db.Boolean, default=False)
 
 class Definition(db.Model):
     """Table for the implementation of definitions."""

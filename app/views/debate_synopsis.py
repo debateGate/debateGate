@@ -21,7 +21,11 @@ from app.forms import HomepageSearch
 
 
 def manage_debate_end_emails(debate, user_pro, user_con):
-    if debate.stage == "finished":
+    if debate.stage == "finished" and debate.has_sent_finished_emails == False:
+
+        debate.has_sent_finished_emails = True
+        db.session.commit()
+
         if debate.pro_votes > debate.con_votes:
             try:
                 votes = {
