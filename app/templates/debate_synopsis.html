@@ -79,7 +79,7 @@
                 </p>
             {% endif %}
 
-            {% if server_data["is_timed"] == "timed"  %}
+            {% if server_data["is_timed"] == "timed" %}
                 {% if server_data["debate_stage"] == "pro" and
                 server_data["user_pro"] is not none and
                 server_data["user_con"] is not none %}
@@ -172,7 +172,9 @@
   <hr>
   {% include "modules/show_round_info.html" %}
 
-  {% if server_data["is_timed"] == "timed" %}
+  {% if server_data["is_timed"] == "timed" or
+        server_data["debate_stage"] == "voting" or
+        server_data["debate_stage"] == "finished" %}
      <script src="../../static/jscript/convert_from_utc_to_local.js"></script>
   {% endif %}
 
