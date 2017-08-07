@@ -261,6 +261,7 @@ def debate_synopsis(debate_id):
                 }
 
     else:
+        canVote = False
         template_payload["auth_url"] = g.auth_url
 
     try:
