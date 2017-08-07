@@ -1,0 +1,3 @@
+Your debate at: https://www.debategate.net/debates/debate_synopsis/{{ debate.id }} ended.
+
+It was a tie. Nobody won, and nobody lost.

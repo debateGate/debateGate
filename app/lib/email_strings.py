@@ -37,6 +37,15 @@ def generate_debate_complete_email(win_or_loss, debate, recipient_name, opponent
                         recipient_name=recipient_name, opponent_name=opponent_name, votes=votes)
     ]
 
+def generate_debate_complete_tied_email(debate, recipient_name, opponent_name):
+    return [
+        "Voting has concluded on your debate!",
+        render_template("emails/debate_complete_tied.html", debate=debate,
+                        recipient_name=recipient_name, opponent_name=opponent_name),
+        render_template("emails/debate_complete_tied.txt", debate=debate,
+                        recipient_name=recipient_name, opponent_name=opponent_name)
+    ]
+
 def generate_greetings_email():
     return [
         "A thank you from the debateGate community",

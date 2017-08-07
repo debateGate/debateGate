@@ -14,7 +14,8 @@ from app.lib.queries import return_rounds_of_debate, find_user_debate_stance
 
 from app.lib.utilities import send_email
 from app.lib.email_strings import generate_round_continue_email, generate_voting_session_email, \
-    generate_debate_complete_email, generate_user_joined_debate_email
+    generate_debate_complete_email, generate_user_joined_debate_email, \
+    generate_debate_complete_tied_email
 
 from app.forms import HomepageSearch
 
@@ -34,16 +35,16 @@ def manage_debate_end_emails(debate, user_pro, user_con):
                                                        user_con.name, votes),
                     user_pro.email)
 
-                    votes = {
-                        "opponent": debate.pro_votes,
-                        "recipient": debate.con_votes
-                    }
+                votes = {
+                    "opponent": debate.pro_votes,
+                    "recipient": debate.con_votes
+                }
 
-                    if user_con.send_debate_finished_emails == True:
-                        send_email(
-                            generate_debate_complete_email(False, debate, user_con.name,
-                                                           user_pro.name, votes),
-                        user_con.email)
+                if user_con.send_debate_finished_emails == True:
+                    send_email(
+                        generate_debate_complete_email(False, debate, user_con.name,
+                                                       user_pro.name, votes),
+                    user_con.email)
             except:
                 pass
 
@@ -60,16 +61,30 @@ def manage_debate_end_emails(debate, user_pro, user_con):
                                                        user_con.name, votes),
                     user_pro.email)
 
-                    votes = {
-                        "opponent": debate.pro_votes,
-                        "recipient": debate.con_votes
-                    }
+                votes = {
+                    "opponent": debate.pro_votes,
+                    "recipient": debate.con_votes
+                }
 
-                    if user_con.send_debate_finished_emails == True:
+                if user_con.send_debate_finished_emails == True:
                         send_email(
                             generate_debate_complete_email(True, debate, user_con.name,
                                                            user_pro.name, votes),
                         user_con.email)
+            except:
+                pass
+
+        else:
+            try:
+                if user_pro.send_debate_finished_emails == True:
+                    send_email(
+                        generate_debate_complete_tied_email(debate, user_pro.name, user_con.name),
+                    user_pro.email)
+
+                if user_con.send_debate_finished_emails == True:
+                    send_email(
+                        generate_debate_complete_tied_email(debate, user_con.name, user_pro.name),
+                    user_con.email)
             except:
                 pass
 

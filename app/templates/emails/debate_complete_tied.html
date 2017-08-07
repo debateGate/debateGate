@@ -1,0 +1,16 @@
+<html><head></head>
+    <body>
+        <h3 style="text-align:center;">
+            <a href="https://www.debategate.net/debates/debate_synopsis/{{ debate.id }}">
+                Your debate ended</a>, {{ recipient_name }}!
+        </h3>
+
+        <p style="margin-left:2%;">
+            <a href="https://www.debategate.net/debates/debate_synopsis/{{ debate.id }}">Your debate with</a> {{ opponent_name }} about {{ debate.topic }} just ended.
+        </p>
+
+        It was an exact tie. Nobody won, and nobody lost.
+
+        {% include "emails/footer.html" %}
+    </body>
+</html>
