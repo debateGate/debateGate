@@ -17,7 +17,7 @@ function checkDebateForChange() {
     };
 
     xhttp.open("GET", "https://www.debategate.net/api/has-debate-moved-on-boolean/" + debate_id +
-               "/" + round_num + "/" + debate_stage , false);
+               "/" + round_num + "/" + debate_stage , true);
     xhttp.send();
 }
 
