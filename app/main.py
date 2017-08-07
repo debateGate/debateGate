@@ -7,6 +7,7 @@ and the app server should handle it in production via run.sh
 from flask import Flask
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 from config import config
 
@@ -14,6 +15,7 @@ main = Flask(__name__)
 main.config.from_object(config["prod"]) # change to dev for devving
 
 db = SQLAlchemy(main)
+migrate = Migrate(main, db)
 
 login_manager = LoginManager(main)
 login_manager.session_protection = "strong"
