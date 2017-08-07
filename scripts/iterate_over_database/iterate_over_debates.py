@@ -23,7 +23,7 @@ for debate in Debate.query.all():
 
 
     if (debate.time_for_next_phase is not None) and (datetime.datetime.utcnow() > debate.time_for_next_phase) \
-	and (debate.stage != "archived"):
+        and (debate.stage != "archived"):
 
         if debate.stage == "voting":
             debate.stage = "finished"
