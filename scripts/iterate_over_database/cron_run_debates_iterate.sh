@@ -1,4 +1,4 @@
 #!/bin/bash
-cd ~/debategate
-source ~/debategate/flask/bin/activate
-./iterate_over_debates.py
+cd /home/seb/debategate
+source /home/seb/debategate/flask/bin/activate
+/home/seb/debategate/iterate_over_debates.py
