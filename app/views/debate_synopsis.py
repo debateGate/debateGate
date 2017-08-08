@@ -300,6 +300,9 @@ def debate_synopsis(debate_id):
 
             elif (user_pro is not None) and (user_con is not None):
                 if (debate.stage == "pro") or (debate.stage == "con"):
+
+                    switch_from_pro_to_con(debate)
+
                     claim = Claim()
                     claim.enthymeme_claim = " "
                     claim.enthymeme_justification = " "
@@ -307,12 +310,10 @@ def debate_synopsis(debate_id):
                     claim.user_type = debate.stage
                     debate.claims.append(claim)
 
-                    switch_from_pro_to_con(debate, user_pro, user_con)
-
             db.session.commit()
             manage_debate_end_emails(debate, user_pro, user_con)
     except:
-        pass
+        print("ERROR")
 
 
     if (debate.stage == "voting" or debate.stage == "finished"):
