@@ -172,10 +172,8 @@
   <hr>
   {% include "modules/show_round_info.html" %}
 
-  {% if server_data["is_timed"] == "timed" or
-        server_data["debate_stage"] == "voting" or
-        server_data["debate_stage"] == "finished" %}
-     <script src="../../static/jscript/convert_from_utc_to_local.js"></script>
+  {% if server_data["debate_stage"] == "finished" %}
+      <script src="../../static/jscript/convert_from_utc_to_local.js" async></script>
   {% endif %}
 
   {% if server_data["debate_stage"] == "voting" or
