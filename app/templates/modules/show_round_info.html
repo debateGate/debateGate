@@ -10,7 +10,11 @@
               {% if server_data["rounds"][n][0] is defined %}
                   {% for e in server_data["rounds"][n][0] %}
                       <div>
+                      {% if e["claim"] != " " %}
                           <p><b>Claim: </b>{{ e["claim"] }}</p> <div style="text-align:center;"><b>because</b></div>  <p>{{ e["support"] }}</p>
+                      {% else %}
+                          <p style="text-align:center;">The pro side skipped this round.</p>
+                      {% endif %}
                       </div>
                   {% endfor %}
               {% endif %}
@@ -21,7 +25,13 @@
 
               {% if server_data["rounds"][n][1] is defined %}
                   {% for e in server_data["rounds"][n][1] %}
-                      <p><b>Claim: </b>{{ e["claim"] }}</p> <div style="text-align:center;"><b>because</b></div>  <p>{{ e["support"] }}</p>
+                      <div>
+                      {% if e["claim"] != " " %}
+                          <p><b>Claim: </b>{{ e["claim"] }}</p> <div style="text-align:center;"><b>because</b></div>  <p>{{ e["support"] }}</p>
+                      {% else %}
+                          <p style="text-align:center;">The con side skipped this round.</p>
+                      {% endif %}
+                      </div>
                   {% endfor %}
               {% endif %}
           </section>
