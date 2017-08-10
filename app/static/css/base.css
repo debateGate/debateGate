@@ -111,6 +111,17 @@ tr:hover {
     margin-top: 2px;
 }
 
+#profileLinks a, #loginInfo img {
+    float: right;
+    margin-right: 10px;
+}
+
+#loginInfo img {
+    margin-top: 7px;
+    margin-bottom: 7px;
+    border: 1px solid #2d2b44;
+}
+
 #social_media{
     float: right;
     padding: 5px;

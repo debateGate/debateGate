@@ -28,7 +28,7 @@
             <div class="pro_versus_info">
             {% if server_data["canVote"] == True %}
                 <a href = {{ url_for("profile", user_id=server_data["user_pro"].id, page=1) }}>
-                    <img src={{ server_data["user_pro"].avatar }} class="pro_versus_info">
+                    <img style="border: 1px solid #2d2b44;" src={{ server_data["user_pro"].avatar }} class="pro_versus_info">
                 </a>
 
                 <b><span class="name">{{ server_data["user_pro"].name }}</span></b>
@@ -36,7 +36,7 @@
             {% else %}
                 {% if server_data["user_pro"] is not none %}
                     <a href = {{ url_for("profile", user_id=server_data["user_pro"].id, page=1) }}>
-                        <img src={{ server_data["user_pro"].avatar }} class="pro_versus_info">
+                        <img style="border: 1px solid #2d2b44;" src={{ server_data["user_pro"].avatar }} class="pro_versus_info">
                     </a>
 
                     <b><span class="name">{{ server_data["user_pro"].name }}</span></b>
@@ -106,14 +106,14 @@
             <div class="con_versus_info">
                 {% if server_data["canVote"] == True %}
                     <a href = {{ url_for("profile", user_id=server_data["user_con"].id, page=1) }}>
-                        <img src={{ server_data["user_con"].avatar }} class="con_versus_info">
+                        <img style="border: 1px solid #2d2b44;" src={{ server_data["user_con"].avatar }} class="con_versus_info">
                     </a>
 
                     <b><span class="name">{{ server_data["user_con"].name }}</span></b>
                 {% else %}
                     {% if server_data["user_con"] is not none %}
                         <a href = {{ url_for("profile", user_id=server_data["user_con"].id, page=1) }}>
-                            <img src={{ server_data["user_con"].avatar }} class="con_versus_info">
+                            <img style="border: 1px solid #2d2b44;" src={{ server_data["user_con"].avatar }} class="con_versus_info">
                         </a>
                         <b><span class="name">{{ server_data["user_con"].name }}</span></b>
                     {% else %}

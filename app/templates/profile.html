@@ -17,7 +17,7 @@
 {% block content %}
 
 <div id="profile_data">
-    <img src={{ server_data["prof_user"].avatar }} width=128 height=128><br>
+    <img style="border: 1px solid #2d2b44;" src={{ server_data["prof_user"].avatar }} width=128 height=128><br>
     {{ server_data["prof_user"].name }}<br><br>
 
     Win/loss ratio:<br> {{ server_data["prof_user"].wins }} : {{ server_data["prof_user"].losses }} <br>

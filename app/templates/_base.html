@@ -23,12 +23,15 @@
 
                 <div id="loginInfo">
                     {% if current_user.is_authenticated %}
-                        <p>{{ server_data["user"].name }}</p>
+                        {{ server_data["user"].name }}
+                        <br>
 				                <img src={{ server_data["user"].avatar }} width=96 height=96><br>
+                        <div id="profileLinks">
 				                <a href = {{ url_for("profile", user_id=current_user.id, page=1) }}>Your Profile</a><br>
 				                <a href = {{ url_for("settings") }}>Settings</a><br>
-                    <a href = {{ url_for("create_or_join_debate") }}>Create/Join Debate</a><br>
+                        <a href = {{ url_for("create_or_join_debate") }}>Create/Join Debate</a><br>
 				                <a href = {{ url_for("logout") }}>Logout</a><br>
+                        </div>
 			              {% else %}
     				            <a class="button" href = {{ server_data["auth_url"] }}>Start debating with Google</a>
                     {% endif %}
