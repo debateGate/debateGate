@@ -13,9 +13,25 @@
 {% block content %}
 
 <form class="form_adjust" action="" method="post" name="settings_form">
-		{{ server_data["settings_form"].hidden_tag() }}
+    <h3> User Settings </h3>
+		{{ server_data["username_form"].hidden_tag() }}
 
-    <h1> Email Settings </h1>
+    Change your name (up to 20 characters):
+    <br>
+    {% for error in server_data["username_form"].name.errors %}
+        <span style="color:red;">[Problem with changing username: {{ error }}]</span>
+    {% endfor %}
+        <br>
+    {{ server_data["username_form"].name }}
+    <br><br><br>
+
+    Sync your name with Google when you log in?:<br>
+    {{ server_data["sync_with_google"].sync_with_google }}
+    <br>
+
+    <h3> Email Settings </h3>
+
+		{{ server_data["settings_form"].hidden_tag() }}
     Send emails when someone joins a debate you created: <br>
 		{{ server_data["settings_form"].send_user_joined_emails }}
 

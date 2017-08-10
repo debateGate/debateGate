@@ -65,7 +65,8 @@ def gCallBack():
             user.losses = 0
             new_user = True
 
-        user.name = user_data["name"]
+        if user.sync_with_google == True:
+            user.name = user_data["name"]
         user.tokens = json.dumps(token)
         user.avatar = user_data["picture"]
 

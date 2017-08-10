@@ -3,7 +3,7 @@ from flask_login import current_user, login_required
 
 from app.main import main, db
 from app.models import User
-from app.forms import HomepageSearch, EmailSettings
+from app.forms import HomepageSearch, EmailSettings, ChangeUsername, SyncWithGoogle
 
 
 @main.route("/settings", methods=['GET', 'POST'])
@@ -35,10 +35,21 @@ def settings():
 
     user_settings = User.query.filter_by(id=current_user.id).first()
     settings_form = EmailSettings(obj=user_settings)
+    change_username = ChangeUsername(obj=user_settings)
+    sync_with_google = SyncWithGoogle(obj=user_settings)
 
     template_payload["settings_form"] = settings_form
+    template_payload["username_form"] = change_username
+    template_payload["sync_with_google"] = sync_with_google
 
-    if settings_form.validate_on_submit():
+    if settings_form.validate_on_submit() and change_username.validate_on_submit() and \
+       sync_with_google.validate_on_submit():
+
+        if (not change_username.name.data.isspace()) and (change_username.name.data != ""):
+            user_settings.name = change_username.name.data
+
+        user_settings.sync_with_google = bool(sync_with_google.sync_with_google.data)
+
         user_settings.send_user_joined_emails = bool(settings_form.send_user_joined_emails.data)
         user_settings.send_round_continue_emails = bool(settings_form.send_round_continue_emails.data)
         user_settings.send_voting_notification_emails = bool(settings_form.send_voting_notification_emails.data)

@@ -78,6 +78,19 @@ class JoinDebate(Form):
     button = SubmitField(label="Join Debate", validators=[DataRequired()])
 
 
+class ChangeUsername(Form):
+    name = StringField("username", validators=[
+                                                      DataRequired(),
+                                                      Length(max=20)
+                                                      ])
+
+class SyncWithGoogle(Form):
+    sync_with_google = RadioField("sync_with_google",
+                            choices=[
+                                (1, "Yes"),
+                                (0, "No")
+                            ], coerce=int, validators=[InputRequired()])
+
 class HomepageSearch(Form):
     search_bar = StringField("search_bar", render_kw={"placeholder": "Optional search"})
     debate_type = SelectField("debate_type", choices=[

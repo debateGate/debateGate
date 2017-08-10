@@ -23,7 +23,7 @@
 
                 <div id="loginInfo">
                     {% if current_user.is_authenticated %}
-                        {{ server_data["user"].name }}
+                    <span id="loginInfoUsername">{{ server_data["user"].name }}</span>
                         <br>
 				                <img src={{ server_data["user"].avatar }} width=96 height=96><br>
                         <div id="profileLinks">

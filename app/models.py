@@ -52,6 +52,9 @@ class User(db.Model, UserMixin):
     send_voting_notification_emails = db.Column(db.Boolean, default=True)
     send_debate_finished_emails = db.Column(db.Boolean, default=True)
 
+    #sync with google
+    sync_with_google = db.Column(db.Boolean, default=True)
+
 
 class Debate(db.Model):
     """Pretty much a catch-all table for anything related to a debate at this point."""
