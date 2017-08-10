@@ -81,6 +81,14 @@ tr:hover {
 #gFooter {
     background-color: #F0F7FF; /* off-white */
     margin: 1%;
+    clear:both;
+}
+
+#gFooter:after {
+    content: " ";
+    display: block;
+    height: 0;
+    clear: both;
 }
 
 #search_debate_form-debate_type {
@@ -103,7 +111,12 @@ tr:hover {
 
 #social_media{
     float: right;
+    padding: 5px;
     display: inline;
+}
+
+#social_media img:hover {
+    opacity: 0.7;
 }
 
 .form_adjust{

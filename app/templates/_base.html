@@ -27,7 +27,7 @@
 				                <img src={{ server_data["user"].avatar }} width=96 height=96><br>
 				                <a href = {{ url_for("profile", user_id=current_user.id, page=1) }}>Your Profile</a><br>
 				                <a href = {{ url_for("settings") }}>Settings</a><br>
-				                <a href = {{ url_for("create_or_join_debate") }}>Create/Join Debate</a><br>
+                    <a href = {{ url_for("create_or_join_debate") }}>Create/Join Debate</a><br>
 				                <a href = {{ url_for("logout") }}>Logout</a><br>
 			              {% else %}
     				            <a class="button" href = {{ server_data["auth_url"] }}>Start debating with Google</a>
@@ -50,7 +50,6 @@
 
 
         <nav id="gNav">
-            <hr style="margin: 0;">
         </nav>
 
 
@@ -71,23 +70,22 @@
 
             <div id="social_media">
                 <a href ="https://www.patreon.com/sebbot">
-                    <img src="{% block social_media_path_patreon %}{% endblock %}" width="32" height="32"/>
+                    <img src="{% block social_media_path_patreon %}{% endblock %}" width="24" height="24"/>
                 </a>
 
                 <a href="https://debategate.tumblr.com">
-                    <img src="{% block social_media_path_tumblr %}{% endblock %}" width="32" height="32"/>
+                    <img src="{% block social_media_path_tumblr %}{% endblock %}" width="24" height="24"/>
                 </a>
 
                 <a href ="https://twitter.com/_debateGate">
-                    <img src="{% block social_media_path_twitter %}{% endblock %}" width="32" height="32"/>
+                    <img src="{% block social_media_path_twitter %}{% endblock %}" width="24" height="24"/>
                 </a>
 
                 <a href ="https://www.github.com/debateGate">
-                    <img src="{% block social_media_path_github %}{% endblock %}" width="32" height="32"/>
+                    <img src="{% block social_media_path_github %}{% endblock %}" width="24" height="24"/>
                 </a>
             </div>
         </footer>
-        <hr style="clear:both;">
         </div>
         <script>
          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
