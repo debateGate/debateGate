@@ -12,7 +12,7 @@ from flask_migrate import Migrate
 from config import config
 
 main = Flask(__name__)
-main.config.from_object(config["prod"]) # change to dev for devving
+main.config.from_object(config["dev"]) # change to dev for devving
 
 db = SQLAlchemy(main)
 migrate = Migrate(main, db)

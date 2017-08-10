@@ -107,6 +107,8 @@ tr:hover {
 
 #loginInfo {
     float: right;
+    margin-right: 4px;
+    margin-top: 2px;
 }
 
 #social_media{
@@ -143,6 +145,17 @@ tr:hover {
 
 .pagination_buttons {
     margin-left: 1%;
+}
+
+.pagination_buttons a {
+    border: 1px solid #c6c6c6;
+    border-radius: 3px;
+    padding: 3px;
+    background-color: #e0dede;
+}
+
+.pagination_buttons a:hover {
+    opacity: 0.7;
 }
 
 .debate {
