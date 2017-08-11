@@ -284,7 +284,7 @@ def debate_synopsis(debate_id):
         template_payload["auth_url"] = g.auth_url
 
     try:
-        if (debate.time_for_next_phase < datetime.datetime.utcnow()):
+        if (debate.time_for_next_phase is not None) and (debate.time_for_next_phase < datetime.datetime.utcnow()):
             if (debate.stage == "voting"):
                 debate.stage = "finished"
 
@@ -314,8 +314,7 @@ def debate_synopsis(debate_id):
             db.session.commit()
             manage_debate_end_emails(debate, user_pro, user_con)
     except:
-        print("ERROR")
-
+        pass
 
     if (debate.stage == "voting" or debate.stage == "finished"):
         template_payload["pro_votes"] = debate.pro_votes
