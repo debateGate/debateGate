@@ -64,14 +64,11 @@
 
 <br>
 <table width="100%" margin="0%" padding="0%" class="debateTable">
-    {% set debateNum = 1 %}
 
 	  {% for debate in server_data["debates"] %}
 		    {% include "modules/show_debate.html" %}
 
-        {% set debateNum = debateNum + 1 %}
-
-        {% if debateNum == 5 and server_data["is_vip"] != True %}
+        {% if loop.index == 5 and server_data["is_vip"] != True %}
             <tr><td>
                 <div style="margin:auto;width:728px;">
                     <script type="text/javascript">
