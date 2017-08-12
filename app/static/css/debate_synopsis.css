@@ -44,6 +44,10 @@ h1, h2, h4 {
     float: right;
 }
 
+.pro p, .con p {
+    white-space: pre-wrap;
+}
+
 .pro_versus_info, .con_versus_info, .votes_style, .name {
     margin: auto;
     display: block;
