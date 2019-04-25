@@ -12,7 +12,7 @@ You can run this series of commands in the directory you wish to install debateG
 `./debateGate_install.sh`
 
 
-This will download the install script, make the it executable, and install the project. If you want to download the file via your browser instead of using wget, you can grab it from [here](https://gist.github.com/dev-sebbot/1a61d31f7ea169b6f6a2973614e9633e). Note that you may need to use your package manager to install platform-specific packages (Ubuntu has python3-venv, for example) for this to work.
+This will download the install script, make the it executable, and install the project. If you want to download the file via your browser instead of using wget, you can grab it from [here](https://gist.github.com/devsebb/1a61d31f7ea169b6f6a2973614e9633e). Note that you may need to use your package manager to install platform-specific packages (Ubuntu has python3-venv, for example) for this to work.
 
 You will then need to install Postgresql and createdb a new database. Also, in app/main.py, you'll probably want to change the mode from "prod" to "dev". Doing this means you'll also need to self-sign and put in the base directory (above app/) an ssl.crt and an ssl.key.
 
