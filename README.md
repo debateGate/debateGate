@@ -1,4 +1,4 @@
-| This is an archive of a side project from a long time ago. Luckily, I have improved since then! |
+| This is an archive of a side project from ancient times. Reader be warned, for the spaghetti contained within can drive even the most rational to madness. |
 | --- |
 
 # debateGate.net
